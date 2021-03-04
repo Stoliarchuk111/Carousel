@@ -71,14 +71,14 @@
         }
     }
 
-    function indicate(e) {
-        const target = e.target;
+	function indicate(e) {
+    	const target = e.target;
 
-        if (target && target.classList.contains('indicator')) {
-            pause();
-            goToSlide(+target.getAttribute('data-slide-to'));
-        }
-    }
+    if (target && target.classList.contains('indicator')) {
+    pause();
+    goToSlide(+target.getAttribute('data-slide-to')); 
+  }
+}
 
     function pressKey(e) {
         if (e.code === LEFT_ARROW) prev();

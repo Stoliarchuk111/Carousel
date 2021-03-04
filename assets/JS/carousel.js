@@ -51,7 +51,7 @@ class Carousel {
             const indicator = document.createElement('li');
 
             indicator.setAttribute('class', 'indicator');
-            indicator.setAttribute('data-slide-to', `$(i)`);
+            indicator.setAttribute('data-slide-to', `${i}`);
             i === 0 && indicator.classList.add('active');
 
             indicators.appendChild(indicator);
@@ -70,6 +70,7 @@ class Carousel {
         this.indContainer.addEventListener('click', this.indicate.bind(this));
         document.addEventListener('keydown', this.pressKey.bind(this));
     }
+
 
 
     _goToSlide(n) {
@@ -118,12 +119,12 @@ class Carousel {
     indicate(e) {
         const target = e.target;
 
-    if (target && target.classList.contains('indicakator')) {
+    if (target && target.classList.contains('indicator')) {
         this.pause();
         this._goToSlide(+target.getAttribute('data-slide-to'));
-    
+        }
     }
-    }
+
 
     pressKey(e) {
         if (e.code === this.LEFT_ARROW) this.prev();
@@ -158,10 +159,3 @@ class SwipeCarousel extends Carousel {
     }
 }
   
-
-
-
-
-
-
-

@@ -50,23 +50,21 @@ Carousel.prototype = {
  },
 
  _initIndicators() {
-        const indicators = document.createElement('ol');
+    const indicators = document.createElement('ol');
 
-        indicators.setAttribute('class', 'indicators');
-        indicators.setAttribute('id', 'indicators-container');
+    indicators.setAttribute('class', 'indicators');
+    indicators.setAttribute('id', 'indicators-container');
 
-        for (let i = 0, n = this.slidesCount; i < n; i++) {
-            const indicator = document.createElement('li');
-
-            indicator.setAttribute('class', 'indicator');
-            indicator.setAttribute('data-slide-to', `$(i)`);
-            i === 0 && indicator.classList.add('active');
-
-            indicators.appendChild(indicator);
-        }
+    for (let i = 0, n = this.slidesCount; i < n; i++) {
+        const indicator = document.createElement('li');
+  
+        indicator.setAttribute('class', 'indicator');
+        indicator.setAttribute('data-slide-to', `${i}`);
+        i === 0 && indicator.classList.add('active');
+        indicators.appendChild(indicator);
+    }
 
         this.container.appendChild(indicators);
-
         this.indContainer = this.container.querySelector('#indicators-container');
         this.indItem = this.container.querySelectorAll('.indicator');
         },
@@ -77,6 +75,7 @@ Carousel.prototype = {
         this.nextBtn.addEventListener('click', this.next.bind(this));
         this.indContainer.addEventListener('click', this.indicate.bind(this));
         document.addEventListener('keydown', this.pressKey.bind(this));
+
     },
 
 
@@ -124,14 +123,13 @@ Carousel.prototype = {
     },
 
     indicate(e) {
-        const target = e.target;
+    	const target = e.target;
 
-    if (target && target.classList.contains('indicakator')) {
-        this.pause();
-        this._goToSlide(+target.getAttribute('data-slide-to'));
-    
-    }
-    },
+    if (target && target.classList.contains('indicator')) {
+    this.pause();
+    this._goToSlide(+target.getAttribute('data-slide-to')); 
+  }
+},
 
     pressKey(e) {
         if (e.code === this.LEFT_ARROW) this.prev();
